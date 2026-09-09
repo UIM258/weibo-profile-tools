@@ -2,7 +2,7 @@
 // @name         微博个人主页分页浏览
 // @name:zh-CN   微博个人主页分页浏览
 // @namespace    https://github.com/your-name/weibo-profile-pager
-// @version      1.0.0
+// @version      1.0.1
 // @icon         https://weibo.com/favicon.ico
 // @description  微博个人主页(u/xxx)信息流分页浏览：上一页/下一页/页码跳转/一键直达最早；支持暗色模式、点击图片灯箱预览、自动缓存，快速回看早期微博
 // @description:zh-CN  微博个人主页(u/xxx)信息流分页浏览：上一页/下一页/页码跳转/一键直达最早；支持暗色模式、点击图片灯箱预览、自动缓存，快速回看早期微博

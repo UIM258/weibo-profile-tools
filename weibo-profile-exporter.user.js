@@ -2,7 +2,7 @@
 // @name         微博个人主页历史导出器
 // @name:zh-CN   微博个人主页历史导出器
 // @namespace    https://github.com/your-name/weibo-profile-exporter
-// @version      1.0.0
+// @version      1.0.1
 // @icon         https://weibo.com/favicon.ico
 // @description  按日期范围与内容类型（原创/转发 × 纯文字/图片/视频/音乐）抓取微博个人主页历史，打包成 Telegram 式归档：messages 分卷 HTML + JSON/CSV + photos/video_files/audio_files 本地媒体，可选手动分卷与日间/夜间
 // @description:zh-CN  按日期范围与内容类型（原创/转发 × 纯文字/图片/视频/音乐）抓取微博个人主页历史，打包成 Telegram 式归档：messages 分卷 HTML + JSON/CSV + photos/video_files/audio_files 本地媒体，可选手动分卷与日间/夜间
