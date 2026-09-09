@@ -7,6 +7,15 @@
 
 MIT 协议，© 2026 UIM258。
 
+## 效果预览
+
+分页浏览（按页 + 直达最早 + 图片预览）：
+
+![分页浏览界面](assets/pager-preview.png)
+
+历史导出器（日期范围 + 类型勾选 + 打包选项）：
+
+![历史导出器设置面板](assets/exporter-preview.png)
 ## 安装
 
 1. 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)
