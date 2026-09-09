@@ -18,10 +18,12 @@ MIT 协议，© 2026 UIM258。
 ![历史导出器设置面板](assets/exporter-preview.png)
 ## 安装
 
-1. 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)
-2. 打开对应 `.user.js` 的 Raw 地址即可安装，或新建脚本后粘贴全文
-3. **登录微博**后打开任意个人主页（`https://weibo.com/u/<uid>`），页面角落会出现悬浮按钮
-4. 未登录时微博会风控（提示“前方有点拥堵，请登录后使用”），脚本需登录态才能正常工作
+- 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)
+- 打开对应 `.user.js` 的 Raw 地址安装，或从 GreasyFork 一键安装：
+  - 分页浏览：https://greasyfork.org/scripts/595054
+  - 历史导出器：https://greasyfork.org/scripts/595055
+- **登录微博**后打开任意个人主页（`https://weibo.com/u/<uid>`），页面角落会出现悬浮按钮
+- 未登录时微博会风控（提示“前方有点拥堵，请登录后使用”），脚本需登录态才能正常工作
 
 ## 脚本一：分页浏览
 
