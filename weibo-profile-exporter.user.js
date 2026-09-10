@@ -2,7 +2,7 @@
 // @name         微博个人主页历史导出器
 // @name:zh-CN   微博个人主页历史导出器
 // @namespace    https://github.com/your-name/weibo-profile-exporter
-// @version      1.0.2
+// @version      1.0.3
 // @icon         https://weibo.com/favicon.ico
 // @description  按日期范围与内容类型（原创/转发 × 纯文字/图片/视频/音乐）抓取微博个人主页历史，打包成 Telegram 式归档：messages 分卷 HTML + JSON/CSV + photos/video_files/audio_files 本地媒体，可选手动分卷与日间/夜间
 // @description:zh-CN  按日期范围与内容类型（原创/转发 × 纯文字/图片/视频/音乐）抓取微博个人主页历史，打包成 Telegram 式归档：messages 分卷 HTML + JSON/CSV + photos/video_files/audio_files 本地媒体，可选手动分卷与日间/夜间
@@ -971,12 +971,53 @@
         #wbe-body input[type=date] { width:138px; }
     `);
 
+    // 悬浮按钮可拖动（位置记忆）
+    function enableDrag(btn, key) {
+        if (!btn || btn.getAttribute('data-drag') === '1') return;
+        btn.setAttribute('data-drag', '1');
+        var saved = null;
+        try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) {}
+        if (saved && typeof saved.x === 'number' && typeof saved.y === 'number') {
+            btn.style.left = saved.x + 'px'; btn.style.top = saved.y + 'px';
+            btn.style.right = 'auto'; btn.style.bottom = 'auto';
+        }
+        var moved = false;
+        btn.style.cursor = 'grab';
+        btn.addEventListener('mousedown', function (e) {
+            if (e.button !== 0) return;
+            var r = btn.getBoundingClientRect();
+            var ox = e.clientX - r.left, oy = e.clientY - r.top;
+            btn.style.right = 'auto'; btn.style.bottom = 'auto';
+            btn.style.left = r.left + 'px'; btn.style.top = r.top + 'px';
+            btn.style.cursor = 'grabbing';
+            moved = false;
+            function mv(ev) {
+                moved = true;
+                var x = Math.max(4, Math.min(window.innerWidth - btn.offsetWidth - 4, ev.clientX - ox));
+                var y = Math.max(4, Math.min(window.innerHeight - btn.offsetHeight - 4, ev.clientY - oy));
+                btn.style.left = x + 'px'; btn.style.top = y + 'px';
+                ev.preventDefault();
+            }
+            function up() {
+                document.removeEventListener('mousemove', mv);
+                document.removeEventListener('mouseup', up);
+                btn.style.cursor = 'grab';
+                try { localStorage.setItem(key, JSON.stringify({ x: parseInt(btn.style.left, 10), y: parseInt(btn.style.top, 10) })); } catch (err) {}
+                setTimeout(function () { moved = false; }, 0);
+            }
+            document.addEventListener('mousemove', mv);
+            document.addEventListener('mouseup', up);
+        });
+        btn.addEventListener('click', function (e) { if (moved) { e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+    }
+
     function buildUI() {
         var launcher = document.createElement('button');
         launcher.id = 'wbe-launcher';
         launcher.textContent = '导出历史';
         launcher.addEventListener('click', openPanel);
         document.body.appendChild(launcher);
+        enableDrag(launcher, 'wbe_btn_pos');
 
         var ov = document.createElement('div');
         ov.id = 'wbe-overlay';
@@ -1115,6 +1156,7 @@
                 b.textContent = '导出历史';
                 b.addEventListener('click', openPanel);
                 document.body.appendChild(b);
+                enableDrag(b, 'wbe_btn_pos');
                 els.launcher = b;
             }
         }, 3000);

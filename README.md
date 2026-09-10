@@ -22,7 +22,7 @@ MIT 协议，© 2026 UIM258。
 - 打开对应 `.user.js` 的 Raw 地址安装，或从 GreasyFork 一键安装：
   - 分页浏览：https://greasyfork.org/scripts/595054
   - 历史导出器：https://greasyfork.org/scripts/595055
-- **登录微博**后打开任意个人主页（`https://weibo.com/u/<uid>`），页面角落会出现悬浮按钮
+- **登录微博**后打开任意个人主页（`https://weibo.com/u/<uid>`），页面角落会出现悬浮按钮\n- 悬浮按钮支持拖动：按住拖到任意位置，位置会自动记住
 - 未登录时微博会风控（提示“前方有点拥堵，请登录后使用”），脚本需登录态才能正常工作
 
 ## 脚本一：分页浏览
